@@ -25,7 +25,7 @@ Só que há a possibilidade de se colocar outros nomes e valores. <br>
    ex: <br>
 **Arquivo1.tsx**
 
-```tsx
+```js
        type BananaProps = {
           text?: string,
           children?: number
@@ -38,7 +38,7 @@ Só que há a possibilidade de se colocar outros nomes e valores. <br>
 ```
     
 **Arquivo2.tsx**
-   ```tsx
+   ```js
        import React from 'react';
        import ReactDOM from 'react-dom';
 
