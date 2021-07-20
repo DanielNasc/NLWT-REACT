@@ -16,9 +16,48 @@
 <br>
 
 - Componentes: Pequenos pedaços de códigos que juntos formam a aplicação;
-- Propriedade: Chamados de "atributos do HTML"
+- Propriedade: Semelhantes aos atributos do HTML
     ex: <br>
     ```html
         <a href="https://www.youtube.com/c/cccounte">Click</a>
     ```
+Só que há a possibilidade de se colocar outros nomes e valores. <br>
+   ex: <br>
+**Arquivo1.tsx**
+
+```js
+       type BananaProps = {
+          text?: string,
+          children?: number
+       }
+
+       export function Button(props: BananaProps){
+          return (
+          <button>{props.text || props.children || "Hello Button!" }</button>
+           )
+```
+    
+**Arquivo2.tsx**
+   ```js
+       import React from 'react';
+       import ReactDOM from 'react-dom';
+
+       import {Button} from './Arquivo1'       
+       
+       ReactDOM.render(
+         <React.StrictMode>
+           <App />
+           < Button text = "Button 1" />
+           <Button>
+             {2}
+           </Button>
+           < Button />
+           < Button />
+         </React.StrictMode>,
+         document.getElementById('root')
+       );
+
+   ```
+
+
 - Estado: Informação mantida pelo componente
