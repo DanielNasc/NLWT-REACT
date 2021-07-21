@@ -28,13 +28,12 @@ Só que há a possibilidade de se colocar outros nomes e valores. <br>
 ```js
        type BananaProps = {
           text?: string,
-          children?: number
        }
 
        export function Button(props: BananaProps){
           return (
-          <button>{props.text || props.children || "Hello Button!" }</button>
-           )
+          <button>{props.text || "Hello Button!" }</button>
+           )}
 ```
     
 **Arquivo2.tsx**
@@ -46,13 +45,9 @@ Só que há a possibilidade de se colocar outros nomes e valores. <br>
        
        ReactDOM.render(
          <React.StrictMode>
-           <App />
+
            < Button text = "Button 1" />
-           <Button>
-             {2}
-           </Button>
-           < Button />
-           < Button />
+
          </React.StrictMode>,
          document.getElementById('root')
        );
@@ -61,3 +56,7 @@ Só que há a possibilidade de se colocar outros nomes e valores. <br>
 
 
 - Estado: Informação mantida pelo componente
+
+## WebPack
+Module Bundler
+Configurações predefinidas para cada extensão de arquivo ser entendida nas importações do JS
