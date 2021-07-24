@@ -3,6 +3,8 @@
 // import { AuthContext } from '../contexts/AuthContext'
 import { useAuth } from '../hooks/useAuth'
 import { useHistory } from 'react-router-dom'
+import { FormEvent, useState } from 'react'
+import { database } from '../services/firebase'
 
 
 //COMPONENTS=======================================================
@@ -19,6 +21,7 @@ import "../styles/auth.scss"
 export function Home(){
     const history = useHistory()
     const {user, SignInWithGoogle} = useAuth()
+    const [ roomId, SetRoomId ] = useState('')
 
     async function SignInWithGoogleAndCreateNewRoom(){
         if(!user){
@@ -26,6 +29,23 @@ export function Home(){
         }
 
         history.push("/rooms/new")
+    }
+
+    async function handleJoinRoom(event: FormEvent){
+        event.preventDefault()
+
+        if(roomId.trim() === ''){
+            return
+        }
+
+        const roomReference = await database.ref(`rooms/${roomId}`).get()
+
+        if(!roomReference.exists()){
+            alert('Room doesn\'t exist!')
+            return
+        }
+
+        history.push(`/rooms/${roomId}`)
     }
 
     return (
@@ -49,10 +69,12 @@ export function Home(){
                     Ou entre em uma já existente
                 </div>
 
-                <form action="">
+                <form onSubmit = {handleJoinRoom}>
                     <input 
                     type="text" 
                     placeholder= "Digite o código da sala"
+                    onChange = {event => SetRoomId(event.target.value)}
+                    value = {roomId}
                     />
                     
                     <Button>
