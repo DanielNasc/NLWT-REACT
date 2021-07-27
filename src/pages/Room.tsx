@@ -1,5 +1,4 @@
 import { FormEvent, useState } from 'react'
-import { useParams } from 'react-router-dom'
 import { Button } from '../components/Button' 
 import { RoomCode } from '../components/Room-code'
 import { useAuth } from '../hooks/useAuth'
@@ -9,14 +8,10 @@ import '../styles/room.scss'
 import { database } from '../services/firebase'
 import { Questions } from '../components/Question'
 import { useRoom } from '../hooks/useRoom'
-
-type RoomParamsType = {
-    id: string
-}
-
+import { useUrlParams } from '../hooks/useUrlParams'
 
 export function Room(){
-    const params = useParams<RoomParamsType>()
+    const params = useUrlParams()
     const roomId = params.id
     const {user} = useAuth()
     const {title, questions} = useRoom(roomId)
@@ -88,7 +83,7 @@ export function Room(){
                                 <img src={user.avatar} alt="Sua foto" />
                                 <span>{user.name}</span>
                             </div>
-                        ) : (<span>Para enviar uma pergunta, <button>Faça seu login</button></span>) }
+                        ) : (<span>Para enviar uma pergunta, <a href="/">Faça seu login</a></span>) }
                         <Button type="submit" disabled={!user}>Enviar pergunta</Button>
                     </div>
                 </form>

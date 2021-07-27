@@ -11,10 +11,9 @@ import checkImg from '../assets/images/check.svg'
 import answerImg from '../assets/images/answer.svg'
 import '../styles/room.scss'
 
-type RoomParamsType = {
+export type RoomParamsType = {
     id: string
 }
-
 
 export function AdminRoom(){
     const params = useParams<RoomParamsType>()
