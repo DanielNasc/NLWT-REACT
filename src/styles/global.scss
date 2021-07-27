@@ -1,3 +1,11 @@
+:root{
+    --roxin: #835afd;
+    --light-gray: #737388;
+    --rosinha: #e559f9;
+    --separator: #a8a8b3;
+    --h1-and-username: #29292e;
+}
+
 *{
     margin: 0;
     padding: 0;
@@ -10,5 +18,5 @@ body{
 }
 
 body, input, button, textarea{
-    font: 400 16px "Roboto", sans-serif;
+    font: 400 1rem "Roboto", sans-serif;
 }
